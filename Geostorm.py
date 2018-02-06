@@ -1,3 +1,7 @@
+'''
+THIS USES JUPYTER AND PYTHON. TO LEARN ML STEP BY STEP
+
+'''
 # %% PREPROCESSING
 
 import numpy as np
