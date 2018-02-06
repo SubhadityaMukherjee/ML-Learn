@@ -1,5 +1,5 @@
 '''
-THIS USES JUPYTER AND PYTHON. TO LEARN ML STEP BY STEP
+THIS USES JUPYTER AND PYTHON. TO LEARN ML STEP BY STEP. Each part can be run separately using juypter/hydrogen on atom.
 
 '''
 # %% PREPROCESSING
@@ -165,3 +165,15 @@ pp.show()
 from pandas.plotting import scatter_matrix
 scatter_matrix(d)
 pp.show()
+
+# %% TESTING PHASE
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as pp
+from pandas import read_csv as rc
+from pandas.plotting import scatter_matrix
+f = 'aapl.csv'
+names = ['Date','Open','High','Low','Close','Adj Close','Volume']
+d['Date']=pd.to_datetime(d['Date'],format='%Y-%m-%d')
+d = rc(f)
+print(d.describe)
