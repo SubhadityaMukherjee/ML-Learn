@@ -156,3 +156,8 @@ ax.set_yticks(ticks)
 ax.set_xticklabels(names)
 ax.set_yticklabels(names)
 pp.show()
+
+#scatter plot matrix
+from pandas.plotting import scatter_matrix
+scatter_matrix(d)
+pp.show()
