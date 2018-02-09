@@ -166,14 +166,24 @@ from pandas.plotting import scatter_matrix
 scatter_matrix(d)
 pp.show()
 
-# %% TESTING PHASE
-import numpy as np
-import pandas as pd
-from matplotlib import pyplot as pp
+# %% univariate selection
 from pandas import read_csv as rc
-from pandas.plotting import scatter_matrix
-f = 'aapl.csv'
-names = ['Date','Open','High','Low','Close','Adj Close','Volume']
-d['Date']=pd.to_datetime(d['Date'],format='%Y-%m-%d')
-d = rc(f)
-print(d.describe)
+from numpy import set_printoptions as spo
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import chi2
+
+f = 'diabetes.csv'
+names = ['Pregnancies','Glucose','BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age','Outcome']
+print(len(names))
+#feature extraction
+df = rc(f)
+ar = df.values
+X = ar[:,0:8]
+Y = ar[:,8]
+test = SelectKBest(score_func = chi2,k=4)
+fit = test.fit(X,Y)
+#summarize score
+spo(precision = 3)
+print(fit.scores_)
+features = fit.transform(X)
+print(features[0:6:,])
